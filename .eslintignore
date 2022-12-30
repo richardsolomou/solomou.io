@@ -1,0 +1,17 @@
+# Environment variables
+.env
+.env*
+!.env.example
+
+# Logs
+*.log
+logs
+
+# Node
+node_modules
+
+# Build
+.next
+build
+dist
+tsconfig.tsbuildinfo

@@ -1,1 +1,1 @@
-# solomou.io-new
+# solomou.io
