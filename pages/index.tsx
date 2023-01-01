@@ -1,45 +1,52 @@
+import { ArrowForward } from '@mui/icons-material';
 import { Box, Container, Grid, Typography } from '@mui/material';
+import { GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
 import React from 'react';
 
-import { ExternalLinkWithIcon } from '../components/ExternalLinkWithIcon';
-import { Social } from '../components/Social';
-import { Color } from '../lib/colors';
+import { Header } from '../components/Header';
+import { Posts } from '../components/blog/Posts';
+import { NextButton } from '../components/common/NextButton';
+import { PostInterface, getAllPosts } from '../lib/posts';
 
-const Home: React.FC = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = getAllPosts().slice(0, 3);
+  return { props: { posts } };
+};
+
+const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
   return (
-    <Container maxWidth="md" sx={{ textAlign: 'center', my: 5 }}>
-      <Box sx={{ width: 200, height: 200, display: 'inline-flex', borderRadius: '50%', overflow: 'hidden' }}>
-        <Box component="img" src="/images/icons/manifest-icon-512.maskable.png" sx={{ transform: 'scale(1.2)' }} />
-      </Box>
+    <>
+      <Head>
+        <title>Richard Solomou</title>
+      </Head>
 
-      <Box sx={{ my: 3 }}>
-        <Typography variant="h1" paragraph>
-          Hi, I&apos;m Richard 👋
-        </Typography>
+      <Container
+        maxWidth="md"
+        sx={{ my: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: '1 0 auto' }}
+      >
+        <Header />
 
-        <Typography variant="h3" sx={{ color: Color.Grey }}>
-          Full-Stack Engineer &bull; Dungeon Master
-        </Typography>
-      </Box>
+        {posts.length > 0 && (
+          <Box sx={{ pt: 6, pb: 2 }}>
+            <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
+              <Grid item xs={12} sm={7} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                <Typography variant="h2">Latest Posts</Typography>
+              </Grid>
 
-      <Social />
+              <Grid item xs={12} sm={5} sx={{ textAlign: { xs: 'center', sm: 'right' } }}>
+                <NextButton href="/blog" endIcon={<ArrowForward />} variant="contained">
+                  View All
+                </NextButton>
+              </Grid>
+            </Grid>
 
-      <Grid container sx={{ mt: 5 }} justifyContent="center">
-        <Grid item xs={12} md={6}>
-          <Typography paragraph sx={{ display: 'inline-flex', alignItems: 'center' }}>
-            Front-End Engineer at{' '}
-            <ExternalLinkWithIcon
-              color={Color.Keenious}
-              LinkProps={{ href: 'https://keenious.com' }}
-              BoxProps={{ src: '/images/positions/keenious.png', sx: { m: 0 } }}
-            >
-              Keenious
-            </ExternalLinkWithIcon>
-          </Typography>
-        </Grid>
-      </Grid>
-    </Container>
+            <Posts posts={posts} />
+          </Box>
+        )}
+      </Container>
+    </>
   );
 };
 
-export default Home;
+export default IndexPage;

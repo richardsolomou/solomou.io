@@ -1,4 +1,4 @@
-import { createTheme, filledInputClasses, responsiveFontSizes } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { Raleway } from '@next/font/google';
 
 import { Color } from './colors';
@@ -7,9 +7,14 @@ const raleway = Raleway({ subsets: ['latin'] });
 
 export let theme = createTheme({
   palette: {
-    mode: 'light',
-    primary: { main: Color.Black },
-    secondary: { main: Color.Purple },
+    mode: 'dark',
+    primary: { main: Color.Purple },
+    secondary: { main: Color.PaleOrange },
+    background: { default: Color.PurpleDark, paper: Color.PurpleDark },
+    error: { main: Color.Red },
+    warning: { main: Color.Orange },
+    info: { main: Color.Blue },
+    success: { main: Color.Green },
   },
   typography: {
     fontSize: 16,
@@ -20,9 +25,9 @@ export let theme = createTheme({
     h4: { fontFamily: raleway.style.fontFamily, fontSize: 20 },
     h5: { fontFamily: raleway.style.fontFamily, fontSize: 18 },
     h6: { fontFamily: raleway.style.fontFamily, fontSize: 16 },
+    caption: { color: Color.Grey },
   },
   components: {
-    // Global
     MuiPaper: {
       styleOverrides: {
         root: {
@@ -40,13 +45,6 @@ export let theme = createTheme({
         },
       },
     },
-    MuiSkeleton: {
-      styleOverrides: {
-        root: {
-          transform: 'scale(1)',
-        },
-      },
-    },
     MuiChip: {
       styleOverrides: {
         root: {
@@ -54,104 +52,18 @@ export let theme = createTheme({
         },
       },
     },
-    // Navigation
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          borderRadius: 0,
-          boxShadow: 'none',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
-        },
-      },
-    },
-    MuiToolbar: {
-      styleOverrides: {
-        root: {
-          minHeight: '80px !important',
-        },
-      },
-    },
-    MuiDrawer: {
-      styleOverrides: {
-        root: {
-          flexShrink: 0,
-        },
-        paper: {
-          borderRadius: 0,
-          boxSizing: 'border-box',
-        },
-      },
-    },
-    // Forms
     MuiButton: {
       styleOverrides: {
         root: {
           borderRadius: '90px',
           boxShadow: 'none !important',
+          textTransform: 'none',
         },
         sizeMedium: {
-          padding: '12px 20px',
+          padding: '6px 14px',
         },
         sizeLarge: {
-          padding: '18px 40px',
-        },
-      },
-    },
-    MuiInputBase: {
-      styleOverrides: {
-        root: {
-          borderRadius: '10px !important',
-        },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        variant: 'filled',
-      },
-      styleOverrides: {
-        root: {
-          [`& .${filledInputClasses.root}`]: {
-            '&::before, &::after': {
-              border: 'none !important',
-            },
-          },
-        },
-      },
-    },
-    // Accordion
-    MuiAccordion: {
-      defaultProps: {
-        disableGutters: true,
-        elevation: 0,
-        square: true,
-      },
-      styleOverrides: {
-        root: {
-          border: `1px solid rgba(255, 255, 255, 0.12)`,
-          '&:before': {
-            display: 'none',
-          },
-          boxShadow: 'none',
-          background: 'rgba(0, 0, 0, 0.5)',
-        },
-      },
-    },
-    MuiAccordionSummary: {
-      styleOverrides: {
-        root: {
-          borderRadius: '10px 10px',
-          '&.Mui-expanded': {
-            borderRadius: '10px 10px 0 0',
-          },
-          backgroundColor: 'rgba(0, 0, 0, 0.03)',
-        },
-      },
-    },
-    MuiAccordionDetails: {
-      styleOverrides: {
-        root: {
-          padding: 0,
-          borderTop: '1px solid rgba(0, 0, 0, 0.125)',
+          padding: '8px 16px',
         },
       },
     },

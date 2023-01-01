@@ -1,0 +1,25 @@
+html,
+body,
+#__next {
+  height: 100%;
+  height: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+html {
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-feature-settings: 'lnum';
+  -moz-font-feature-settings: 'lnum';
+  font-feature-settings: 'lnum';
+}
+
+/* NProgress */
+#nprogress .bar {
+  background: #475268;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #475268, 0 0 5px #475268;
+}

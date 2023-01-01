@@ -1,5 +1,5 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Box } from '@mui/system';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 
 import { theme } from '../lib/theme';
@@ -13,19 +13,7 @@ export const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) =
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            flex: '1 0 auto',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {children}
-        </Box>
-      </Box>
+      {children}
     </ThemeProvider>
   );
 };

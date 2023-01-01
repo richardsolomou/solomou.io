@@ -1,15 +1,19 @@
 export enum Color {
-  White = '#F7F7FB',
-  Black = '#171717',
-  Grey = '#757575',
-  Purple = '#972ff8',
+  // Purple
+  Purple = '#475268',
+  PurpleDark = '#242330',
+  // Grey
+  Grey = '#b4b4b4',
+  // Blue
+  Blue = '#3688f4',
+  // Red
+  Red = '#f44336',
+  // Orange
+  Orange = '#f9cb25',
+  PaleOrange = '#ffdbb4',
+  // Green
+  Green = '#14532d',
 
-  // Socials
-  LinkedIn = '#0077b5',
-  GitHub = '#24292e',
-  Gmail = '#d44638',
-  CV = '#31577a',
-
-  // Positions
+  // Other
   Keenious = '#6030ff',
 }
