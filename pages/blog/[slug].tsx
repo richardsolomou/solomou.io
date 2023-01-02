@@ -1,67 +1,39 @@
-import { Box, Container, Divider, Paper, Typography } from '@mui/material';
+/* eslint-disable jsx-a11y/alt-text, @next/next/no-img-element */
+import { Box, Divider, FormHelperText, Paper, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import 'highlight.js/styles/base16/material-darker.css';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import Head from 'next/head';
-import React, { memo } from 'react';
+import React from 'react';
 
-import { HeaderAlt } from '../../components/HeaderAlt';
-import { Tags } from '../../components/blog/tags/Tags';
+import { Wrapper } from '../../components/Wrapper';
+import { TagChips } from '../../components/blog/tags/TagChips';
 import { ExternalLink } from '../../components/common/ExternalLink';
+import { Color } from '../../lib/colors';
 import { PostInterface, getPostFromSlug, getSlugs, serializeContent } from '../../lib/posts';
 
 const components = {
-  p: Typography,
-  h1: (() => {
-    const H1 = (props) => <Typography {...props} variant="h1" sx={{ lineHeight: 2 }} />;
-    return memo(H1);
-  })(),
-  h2: (() => {
-    const H2 = (props) => <Typography {...props} variant="h2" sx={{ lineHeight: 2 }} />;
-    return memo(H2);
-  })(),
-  h3: (() => {
-    const H3 = (props) => <Typography {...props} variant="h3" sx={{ lineHeight: 2 }} />;
-    return memo(H3);
-  })(),
-  h4: (() => {
-    const H4 = (props) => <Typography {...props} variant="h4" sx={{ lineHeight: 2 }} />;
-    return memo(H4);
-  })(),
-  h5: (() => {
-    const H5 = (props) => <Typography {...props} variant="h5" sx={{ lineHeight: 2 }} />;
-    return memo(H5);
-  })(),
-  h6: (() => {
-    const H6 = (props) => <Typography {...props} variant="h6" sx={{ lineHeight: 2 }} />;
-    return memo(H6);
-  })(),
-  blockquote: (() => {
-    const Blockquote = (props) => <Paper style={{ borderLeft: '4px solid grey', padding: 8 }} {...props} />;
-    return memo(Blockquote);
-  })(),
-  ul: (() => {
-    const Ul = (props) => <Typography {...props} component="ul" />;
-    return memo(Ul);
-  })(),
-  ol: (() => {
-    const Ol = (props) => <Typography {...props} component="ol" />;
-    return memo(Ol);
-  })(),
-  code: (() => {
-    const Code = (props) => <Paper sx={{ p: 2 }} {...props} />;
-    return memo(Code);
-  })(),
-  li: (() => {
-    const Li = (props) => <Typography {...props} component="li" />;
-    return memo(Li);
-  })(),
+  p: (props) => <Typography {...props} paragraph component="div" />,
+  h1: (props) => <Typography {...props} variant="h1" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  h2: (props) => <Typography {...props} variant="h2" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  h3: (props) => <Typography {...props} variant="h3" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  h4: (props) => <Typography {...props} variant="h4" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  h5: (props) => <Typography {...props} variant="h5" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  h6: (props) => <Typography {...props} variant="h6" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
+  blockquote: (props) => <Paper style={{ borderLeft: '4px solid grey', padding: 8 }} {...props} />,
+  ul: (props) => <Typography {...props} component="ul" />,
+  ol: (props) => <Typography {...props} component="ol" />,
+  code: (props) => <Box component="code" {...props} sx={{ whiteSpace: 'pre', color: Color.PaleOrange }} />,
+  pre: (props) => <Paper {...props} sx={{ p: 2, whiteSpace: 'pre', code: { color: Color.White } }} />,
+  li: (props) => <Typography {...props} component="li" />,
   hr: Divider,
-  a: (() => {
-    const A = (props) => <ExternalLink {...props} color="secondary" />;
-    return memo(A);
-  })(),
+  a: (props) => <ExternalLink {...props} color="secondary" />,
+  img: (props) => (
+    <>
+      <img {...props} style={{ maxWidth: '100%', display: 'flex', margin: '0 auto' }} />
+      {props.alt && <FormHelperText sx={{ textAlign: 'center' }}>{props.alt}</FormHelperText>}
+    </>
+  ),
 };
 
 /**
@@ -90,29 +62,21 @@ const PostPage: NextPage<{ post: PostInterface }> = ({ post }) => {
   const title = `${post.title} - Blog - Richard Solomou`;
 
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+    <Wrapper title={title}>
+      <Box sx={{ py: 2 }}>
+        <Typography variant="h1">{post.title}</Typography>
 
-      <HeaderAlt />
+        <Typography variant="caption" sx={{ display: 'block', my: 1 }}>
+          {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash; {post.readingTime}
+        </Typography>
 
-      <Container maxWidth="md">
-        <Box sx={{ py: 2 }}>
-          <Typography variant="h1">{post.title}</Typography>
+        <TagChips tags={post.tagObjects} />
 
-          <Typography variant="caption" sx={{ display: 'block', my: 1 }}>
-            {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash; {post.readingTime}
-          </Typography>
-
-          <Tags tags={post.tagObjects} />
-
-          <Box sx={{ pt: 2 }}>
-            <MDXRemote {...post.source} components={components as any} />
-          </Box>
+        <Box sx={{ pt: 2 }}>
+          <MDXRemote {...post.source} components={components} />
         </Box>
-      </Container>
-    </>
+      </Box>
+    </Wrapper>
   );
 };
 
