@@ -1,6 +1,9 @@
 export enum Color {
+  // White
+  White = '#ffffff',
   // Purple
   Purple = '#475268',
+  PurpleLight = '#abaac1',
   PurpleDark = '#242330',
   // Grey
   Grey = '#b4b4b4',

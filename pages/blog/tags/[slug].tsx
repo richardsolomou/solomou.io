@@ -1,10 +1,9 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import React from 'react';
 
-import { HeaderAlt } from '../../../components/HeaderAlt';
-import { Posts } from '../../../components/blog/Posts';
+import { Wrapper } from '../../../components/Wrapper';
+import { PostCards } from '../../../components/blog/PostCards';
 import { PostInterface, getAllPosts } from '../../../lib/posts';
 import { TagInterface, getAllTags, getTagFromSlug } from '../../../lib/tags';
 
@@ -34,23 +33,15 @@ const TagPage: NextPage<{ tag: TagInterface; posts: PostInterface[] }> = ({ tag,
   const title = `Posts tagged with ${tag.title} - Blog - Richard Solomou`;
 
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+    <Wrapper title={title}>
+      <Box sx={{ py: 2 }}>
+        <Typography variant="h2" sx={{ mb: 2 }}>
+          Posts tagged with {tag.title}
+        </Typography>
 
-      <HeaderAlt />
-
-      <Container maxWidth="md">
-        <Box sx={{ py: 2 }}>
-          <Typography variant="h2" sx={{ mb: 2 }}>
-            Posts tagged with {tag.title}
-          </Typography>
-
-          <Posts posts={posts} />
-        </Box>
-      </Container>
-    </>
+        <PostCards posts={posts} />
+      </Box>
+    </Wrapper>
   );
 };
 
