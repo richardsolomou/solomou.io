@@ -3,9 +3,9 @@ import dayjs from 'dayjs';
 import NextLink from 'next/link';
 
 import { PostInterface } from '../../lib/posts';
-import { Tags } from './tags/Tags';
+import { TagChips } from './tags/TagChips';
 
-export const Post: React.FC<PostInterface> = (post) => {
+export const PostCard: React.FC<PostInterface> = (post) => {
   return (
     <NextLink href="/blog/[slug]" as={`/blog/${post.slug}`} passHref legacyBehavior>
       <Card component="a" sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, textDecoration: 'none' }}>
@@ -24,7 +24,7 @@ export const Post: React.FC<PostInterface> = (post) => {
                 {post.excerpt}
               </Typography>
 
-              <Tags tags={post.tagObjects} />
+              <TagChips tags={post.tagObjects} />
             </CardContent>
           </Box>
 
