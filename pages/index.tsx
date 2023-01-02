@@ -46,7 +46,7 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
                 Hi, I&apos;m Richard 👋
               </Typography>
 
-              <Typography variant="h3" sx={{ color: Color.Grey }}>
+              <Typography variant="h3" sx={{ color: Color.PurpleLight }}>
                 I&apos;m a Full-Stack Developer with a passion for creating user-friendly and intuitive web
                 applications.
               </Typography>
