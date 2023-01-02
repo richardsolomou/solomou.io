@@ -8,4 +8,5 @@ module.exports = {
   importOrderParserPlugins: ['typescript', 'jsx', 'classProperties', 'decorators-legacy'],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  proseWrap: 'always'
 };
