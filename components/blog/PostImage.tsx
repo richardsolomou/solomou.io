@@ -11,7 +11,7 @@ export const PostImage: React.FC<DetailedHTMLProps<ImgHTMLAttributes<HTMLImageEl
     <Box sx={{ py: 2 }}>
       <img
         {...props}
-        style={{ display: 'flex', margin: '0 auto', maxWidth: '100%', cursor: 'zoom-in', borderRadius: 10 }}
+        style={{ display: 'flex', margin: '0 auto', maxWidth: '75%', cursor: 'zoom-in', borderRadius: 10 }}
         onClick={() => setOpen(true)}
       />
       {props.alt && <FormHelperText sx={{ textAlign: 'center' }}>{props.alt}</FormHelperText>}

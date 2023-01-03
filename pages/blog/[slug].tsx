@@ -38,16 +38,28 @@ const PostPage: NextPage<{ post: FullPost }> = ({ post }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
-        <meta name="og:type" content="article" />
-        <meta name="og:url" content={`https://solomou.io/blog/${post.slug}`} />
-        <meta name="og:title" content={`${post.title} | Richard Solomou`} />
-        <meta name="og:description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
-        <meta name="og:image" content={post.coverImage} />
-        <meta name="twitter:url" content={`https://solomou.io/blog/${post.slug}`} />
-        <meta name="twitter:title" content={`${post.title} | Richard Solomou`} />
-        <meta name="twitter:description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
-        <meta name="twitter:image" content={post.coverImage} />
+        <meta
+          name="description"
+          key="description"
+          content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`}
+        />
+        <meta name="og:type" key="og:type" content="article" />
+        <meta name="og:url" key="og:url" content={`https://solomou.io/blog/${post.slug}`} />
+        <meta name="og:title" key="og:title" content={`${post.title} | Richard Solomou`} />
+        <meta
+          name="og:description"
+          key="og:description"
+          content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`}
+        />
+        <meta name="og:image" key="og:image" content={post.coverImage} />
+        <meta name="twitter:url" key="twitter:url" content={`https://solomou.io/blog/${post.slug}`} />
+        <meta name="twitter:title" key="twitter:title" content={`${post.title} | Richard Solomou`} />
+        <meta
+          name="twitter:description"
+          key="twitter:description"
+          content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`}
+        />
+        <meta name="twitter:image" key="twitter:image" content={post.coverImage} />
       </Head>
 
       <Wrapper>

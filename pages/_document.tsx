@@ -18,7 +18,7 @@ export default class MyDocument extends Document<MyDocumentProps> {
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-          <meta name="description" content="Richard Solomou" />
+          <meta name="description" key="description" content="Richard Solomou" />
           <meta name="keywords" content="Richard Solomou" />
 
           {/* Robots */}
@@ -37,20 +37,24 @@ export default class MyDocument extends Document<MyDocumentProps> {
           <link href="/manifest.json" rel="manifest" crossOrigin="use-credentials" />
 
           {/* Facebook */}
-          <meta name="og:type" content="website" />
-          <meta name="og:url" content="https://solomou.io" />
-          <meta name="og:title" content="Richard Solomou" />
-          <meta name="og:description" content="Richard Solomou" />
-          <meta name="og:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
+          <meta name="og:type" key="og:type" content="website" />
+          <meta name="og:url" key="og:url" content="https://solomou.io" />
+          <meta name="og:title" key="og:title" content="Richard Solomou" />
+          <meta name="og:description" key="og:description" content="Richard Solomou" />
+          <meta name="og:image" key="og:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
 
           {/* Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://solomou.io" />
-          <meta name="twitter:title" content="Richard Solomou" />
-          <meta name="twitter:description" content="Richard Solomou" />
-          <meta name="twitter:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
-          <meta name="twitter:site" content="@richardsolomou" />
-          <meta name="twitter:creator" content="@richardsolomou" />
+          <meta name="twitter:card" key="twitter:card" content="summary_large_image" />
+          <meta name="twitter:url" key="twitter:url" content="https://solomou.io" />
+          <meta name="twitter:title" key="twitter:title" content="Richard Solomou" />
+          <meta name="twitter:description" key="twitter:description" content="Richard Solomou" />
+          <meta
+            name="twitter:image"
+            key="twitter:image"
+            content="https://solomou.io/images/icons/apple-splash-1334-750.jpg"
+          />
+          <meta name="twitter:site" key="twitter:site" content="@richardsolomou" />
+          <meta name="twitter:creator" key="twitter:creator" content="@richardsolomou" />
 
           {/* Favicon */}
           <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/favicon-196.png" />
