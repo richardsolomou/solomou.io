@@ -38,15 +38,16 @@ const PostPage: NextPage<{ post: FullPost }> = ({ post }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta property="og:image" content={post.coverImage} key="og-image" />
-        <meta
-          name="description"
-          content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`}
-          key="description"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${post.title} | Richard Solomou`} key="twitter-title" />
-        <meta name="twitter:image" content={post.coverImage} key="twitter-image" />
+        <meta name="description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
+        <meta name="og:type" content="article" />
+        <meta name="og:url" content={`https://solomou.io/blog/${post.slug}`} />
+        <meta name="og:title" content={`${post.title} | Richard Solomou`} />
+        <meta name="og:description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
+        <meta name="og:image" content={post.coverImage} />
+        <meta name="twitter:url" content={`https://solomou.io/blog/${post.slug}`} />
+        <meta name="twitter:title" content={`${post.title} | Richard Solomou`} />
+        <meta name="twitter:description" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
+        <meta name="twitter:image" content={post.coverImage} />
       </Head>
 
       <Wrapper>

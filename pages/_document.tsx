@@ -37,18 +37,20 @@ export default class MyDocument extends Document<MyDocumentProps> {
           <link href="/manifest.json" rel="manifest" crossOrigin="use-credentials" />
 
           {/* Facebook */}
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://solomou.io" />
-          <meta property="og:title" content="Richard Solomou" />
-          <meta property="og:description" content="Richard Solomou" />
-          <meta property="og:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
+          <meta name="og:type" content="website" />
+          <meta name="og:url" content="https://solomou.io" />
+          <meta name="og:title" content="Richard Solomou" />
+          <meta name="og:description" content="Richard Solomou" />
+          <meta name="og:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
 
           {/* Twitter */}
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://solomou.io" />
-          <meta property="twitter:title" content="Richard Solomou" />
-          <meta property="twitter:description" content="Richard Solomou" />
-          <meta property="twitter:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:url" content="https://solomou.io" />
+          <meta name="twitter:title" content="Richard Solomou" />
+          <meta name="twitter:description" content="Richard Solomou" />
+          <meta name="twitter:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
+          <meta name="twitter:site" content="@richardsolomou" />
+          <meta name="twitter:creator" content="@richardsolomou" />
 
           {/* Favicon */}
           <link rel="icon" type="image/png" sizes="196x196" href="/images/icons/favicon-196.png" />
