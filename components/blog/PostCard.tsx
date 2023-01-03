@@ -10,7 +10,7 @@ export const PostCard: React.FC<PostInterface> = (post) => {
     <NextLink href="/blog/[slug]" as={`/blog/${post.slug}`} passHref legacyBehavior>
       <Card component="a" sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, textDecoration: 'none' }}>
         <CardActionArea sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <CardContent sx={{ flex: '1 0 auto', textAlign: 'left' }}>
               <Typography variant="caption" sx={{ display: 'block', mb: 1 }}>
                 {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash; {post.readingTime}

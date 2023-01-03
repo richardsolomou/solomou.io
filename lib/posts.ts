@@ -27,29 +27,8 @@ export interface PostInterface {
   tagObjects: TagInterface[];
 }
 
-const postsPath = path.join(process.cwd(), 'posts');
-
-/**
- * Get all the slugs from all the posts in the posts directory
- * @returns slugs
- */
-export async function getSlugs() {
-  const paths = await globby(`${postsPath}/*.mdx`);
-
-  return paths.map((path) => {
-    const pathContent = path.split('/');
-    const fileName = pathContent[pathContent.length - 1];
-    // Remove the file extension
-    const [slug] = fileName.split('.');
-    // Remove the published date (e.g, "2023-01-02") from the slug so that it's not visible in the URL
-    const slugContent = slug.split('-');
-    // Remove the first 3 items (year, month, day) from the array
-    slugContent.splice(0, 3);
-    const slugWithoutDate = slugContent.join('-');
-
-    return slugWithoutDate;
-  });
-}
+const postsPath = path.join(process.cwd(), 'public/posts');
+const postFileName = 'post.mdx';
 
 /**
  * Get the publish date of the post from the slug
@@ -71,6 +50,28 @@ export function getPublishDate(slug: string) {
 }
 
 /**
+ * Get all the slugs from all the posts in the posts directory
+ * @returns slugs
+ */
+export async function getSlugs() {
+  const paths = await globby(`${postsPath}/**/${postFileName}`);
+
+  return paths.map((path) => {
+    const pathContent = path.split('/');
+    const fileName = pathContent[pathContent.length - 2];
+    // Remove the file extension
+    const [slug] = fileName.split('.');
+    // Remove the published date (e.g, "2023-01-02") from the slug so that it's not visible in the URL
+    const slugContent = slug.split('-');
+    // Remove the first 3 items (year, month, day) from the array
+    slugContent.splice(0, 3);
+    const slugWithoutDate = slugContent.join('-');
+
+    return slugWithoutDate;
+  });
+}
+
+/**
  * Get the post data from the slug
  * @param slug - The post slug
  * @returns post data
@@ -83,11 +84,11 @@ export function getPostFromSlug(slug: string): PostInterface {
     // Get the publish date from the original slug
     const publishedAt = getPublishDate(fileName);
     // Compare the found file with the expected file name
-    return fileName === `${publishedAt}-${slug}.mdx`;
+    return fileName === `${publishedAt}-${slug}`;
   });
 
   // Get the content of the file and parse it with gray-matter
-  const source = fs.readFileSync(path.join(postsPath, file), 'utf-8');
+  const source = fs.readFileSync(path.join(postsPath, file, postFileName), 'utf-8');
   const { content, data } = matter(source);
 
   // Get the publish date from the original slug
@@ -114,7 +115,7 @@ export function getAllPosts() {
 
     // Get the content of each file and parse it with gray-matter
     return posts.reduce((allPosts, postSlug) => {
-      const source = fs.readFileSync(path.join(postsPath, postSlug), 'utf-8');
+      const source = fs.readFileSync(path.join(postsPath, postSlug, postFileName), 'utf-8');
       const { data } = matter(source);
 
       const publishedAt = getPublishDate(postSlug);

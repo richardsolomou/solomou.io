@@ -137,7 +137,7 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
 
         {posts.length > 0 && (
           <Box sx={{ pt: 6, pb: 2 }}>
-            <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
+            <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} sm={7} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
                 <Typography variant="h2">Latest Posts</Typography>
               </Grid>
@@ -148,6 +148,11 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
                 </NextButton>
               </Grid>
             </Grid>
+
+            <Typography sx={{ mt: 1, mb: 2 }}>
+              On this blog, you&apos;ll find a mix of my insights and experiences as a software developer, as well as
+              in-depth tutorials on how to use various tools and services.
+            </Typography>
 
             <PostCards posts={posts} />
           </Box>

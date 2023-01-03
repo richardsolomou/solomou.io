@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/alt-text, @next/next/no-img-element */
-import { Box, Divider, FormHelperText, Paper, Typography } from '@mui/material';
+import Giscus from '@giscus/react';
+import { Box, Divider, Paper, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import 'highlight.js/styles/base16/material-darker.css';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -7,6 +7,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import React from 'react';
 
 import { Wrapper } from '../../components/Wrapper';
+import { PostImage } from '../../components/blog/PostImage';
 import { TagChips } from '../../components/blog/tags/TagChips';
 import { ExternalLink } from '../../components/common/ExternalLink';
 import { Color } from '../../lib/colors';
@@ -28,12 +29,7 @@ const components = {
   li: (props) => <Typography {...props} component="li" />,
   hr: Divider,
   a: (props) => <ExternalLink {...props} color="secondary" />,
-  img: (props) => (
-    <>
-      <img {...props} style={{ maxWidth: '100%', display: 'flex', margin: '0 auto' }} />
-      {props.alt && <FormHelperText sx={{ textAlign: 'center' }}>{props.alt}</FormHelperText>}
-    </>
-  ),
+  img: PostImage,
 };
 
 /**
@@ -72,9 +68,24 @@ const PostPage: NextPage<{ post: PostInterface }> = ({ post }) => {
 
         <TagChips tags={post.tagObjects} />
 
-        <Box sx={{ pt: 2 }}>
+        <Box sx={{ pt: 2, pb: 4 }}>
           <MDXRemote {...post.source} components={components} />
         </Box>
+
+        <Giscus
+          id="comments"
+          repo="richardsolomou/solomou.io"
+          repoId="R_kgDOIsmP4g"
+          category="Blog Comments"
+          categoryId="DIC_kwDOIsmP4s4CTYRx"
+          mapping="pathname"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="dark_dimmed"
+          lang="en"
+          loading="lazy"
+        />
       </Box>
     </Wrapper>
   );

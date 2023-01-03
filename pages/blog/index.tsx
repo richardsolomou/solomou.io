@@ -23,6 +23,11 @@ const BlogPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
           Blog
         </Typography>
 
+        <Typography variant="body1" sx={{ mb: 2 }}>
+          On this blog, you&apos;ll find a mix of my insights and experiences as a software developer, as well as
+          in-depth tutorials on how to use various tools and services.
+        </Typography>
+
         <PostCards posts={posts} />
       </Box>
     </Wrapper>
