@@ -1,44 +1,22 @@
 import Giscus from '@giscus/react';
-import { Box, Divider, Paper, Typography } from '@mui/material';
-import dayjs from 'dayjs';
-import 'highlight.js/styles/base16/material-darker.css';
+import { Box, Typography } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { MDXRemote } from 'next-mdx-remote';
+import Head from 'next/head';
 import React from 'react';
 
 import { Wrapper } from '../../components/Wrapper';
-import { PostImage } from '../../components/blog/PostImage';
+import { PostBody } from '../../components/blog/PostBody';
 import { TagChips } from '../../components/blog/tags/TagChips';
-import { ExternalLink } from '../../components/common/ExternalLink';
-import { Color } from '../../lib/colors';
-import { PostInterface, getPostFromSlug, getSlugs, serializeContent } from '../../lib/posts';
-
-const components = {
-  p: (props) => <Typography {...props} paragraph component="div" />,
-  h1: (props) => <Typography {...props} variant="h1" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  h2: (props) => <Typography {...props} variant="h2" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  h3: (props) => <Typography {...props} variant="h3" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  h4: (props) => <Typography {...props} variant="h4" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  h5: (props) => <Typography {...props} variant="h5" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  h6: (props) => <Typography {...props} variant="h6" color={Color.PurpleLight} sx={{ lineHeight: 2 }} />,
-  blockquote: (props) => <Paper style={{ borderLeft: '4px solid grey', padding: 8 }} {...props} />,
-  ul: (props) => <Typography {...props} component="ul" />,
-  ol: (props) => <Typography {...props} component="ol" />,
-  code: (props) => <Box component="code" {...props} sx={{ whiteSpace: 'pre', color: Color.PaleOrange }} />,
-  pre: (props) => <Paper {...props} sx={{ p: 2, whiteSpace: 'pre', code: { color: Color.White } }} />,
-  li: (props) => <Typography {...props} component="li" />,
-  hr: Divider,
-  a: (props) => <ExternalLink {...props} color="secondary" />,
-  img: PostImage,
-};
+import { BlogUtils } from '../../lib/BlogUtils';
+import { FullPost } from '../../lib/types';
 
 /**
  * Generate all possible paths for the blog posts
  * @returns post paths
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getSlugs();
-  const paths = slugs.map((slug) => ({ params: { slug } }));
+  const posts = await BlogUtils.getPosts();
+  const paths = posts.map((post) => ({ params: { slug: post.slug } }));
   return { paths, fallback: false };
 };
 
@@ -49,45 +27,63 @@ export const getStaticPaths: GetStaticPaths = async () => {
  */
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params.slug as string;
-  const post = getPostFromSlug(slug);
-  const source = await serializeContent(post.content);
-  return { props: { post: { ...post, source } } };
+  const post = await BlogUtils.getPost(slug);
+  return { props: { post } };
 };
 
-const PostPage: NextPage<{ post: PostInterface }> = ({ post }) => {
+const PostPage: NextPage<{ post: FullPost }> = ({ post }) => {
   const title = `${post.title} - Blog - Richard Solomou`;
 
   return (
-    <Wrapper title={title}>
-      <Box sx={{ py: 2 }}>
-        <Typography variant="h1">{post.title}</Typography>
-
-        <Typography variant="caption" sx={{ display: 'block', my: 1 }}>
-          {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash; {post.readingTime}
-        </Typography>
-
-        <TagChips tags={post.tagObjects} />
-
-        <Box sx={{ pt: 2, pb: 4 }}>
-          <MDXRemote {...post.source} components={components} />
-        </Box>
-
-        <Giscus
-          id="comments"
-          repo="richardsolomou/solomou.io"
-          repoId="R_kgDOIsmP4g"
-          category="Blog Comments"
-          categoryId="DIC_kwDOIsmP4s4CTYRx"
-          mapping="pathname"
-          reactionsEnabled="1"
-          emitMetadata="0"
-          inputPosition="top"
-          theme="dark_dimmed"
-          lang="en"
-          loading="lazy"
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:image" content={post.coverImage} key="og-image" />
+        <meta
+          name="description"
+          content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`}
+          key="description"
         />
-      </Box>
-    </Wrapper>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${post.title} | Richard Solomou`} key="twitter-title" />
+        <meta name="twitter:image" content={post.coverImage} key="twitter-image" />
+      </Head>
+
+      <Wrapper>
+        <Box sx={{ py: 2 }}>
+          <Typography variant="h1">
+            <div dangerouslySetInnerHTML={{ __html: post.titleHTML }} />
+          </Typography>
+
+          <Typography variant="caption" sx={{ display: 'block', my: 1 }}>
+            {post.postedAt} &mdash; {post.readingTime}
+          </Typography>
+
+          <TagChips tags={post.tags} />
+
+          <Box sx={{ pt: 2, pb: 4 }}>
+            <PostBody body={post.body} />
+          </Box>
+
+          <Giscus
+            id="comments"
+            repo={`${BlogUtils.owner}/${BlogUtils.repo}`}
+            repoId={BlogUtils.repoId}
+            category={BlogUtils.category}
+            categoryId={BlogUtils.categoryId}
+            mapping="number"
+            term={post.discussionNumber.toString()}
+            strict="1"
+            reactionsEnabled="1"
+            emitMetadata="0"
+            inputPosition="top"
+            theme="dark_dimmed"
+            lang="en"
+            loading="lazy"
+          />
+        </Box>
+      </Wrapper>
+    </>
   );
 };
 

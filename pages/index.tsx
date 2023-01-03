@@ -9,8 +9,9 @@ import React from 'react';
 import { AnimatedImageLink } from '../components/AnimatedImageLink';
 import { PostCards } from '../components/blog/PostCards';
 import { NextButton } from '../components/common/NextButton';
+import { BlogUtils } from '../lib/BlogUtils';
 import { Color } from '../lib/colors';
-import { PostInterface, getAllPosts } from '../lib/posts';
+import { ShortPost } from '../lib/types';
 import alliantsLogo from '../public/images/positions/alliants.svg';
 import feefoLogo from '../public/images/positions/feefo.svg';
 import keeniousLogo from '../public/images/positions/keenious.svg';
@@ -19,15 +20,15 @@ import protoioLogo from '../public/images/positions/protoio.svg';
 import richard from '../public/images/richard.webp';
 
 /**
- * Get the latest 3 posts
+ * Get the 3 most recent posts
  * @returns posts
  */
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = await BlogUtils.getPosts(3);
   return { props: { posts } };
 };
 
-const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
+const IndexPage: NextPage<{ posts: ShortPost[] }> = ({ posts }) => {
   return (
     <>
       <Head>
@@ -47,8 +48,8 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
               </Typography>
 
               <Typography variant="h3" sx={{ color: Color.PurpleLight }}>
-                I&apos;m a Full-Stack Developer with a passion for creating user-friendly and intuitive web
-                applications.
+                I&apos;m a Full-Stack Developer with a focus on the front-end and a passion for creating user-friendly
+                web applications.
               </Typography>
             </Box>
           </Grid>
@@ -77,7 +78,7 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
                   }}
                   label={
                     <>
-                      <Typography variant="body2">Full-Stack Engineer at</Typography>
+                      <Typography variant="body2">Front-End Engineer at</Typography>
 
                       <AnimatedImageLink href="https://keenious.com">
                         <Image src={keeniousLogo} alt="Keenious" height={20} style={{ marginBottom: 6 }} />
@@ -139,11 +140,11 @@ const IndexPage: NextPage<{ posts: PostInterface[] }> = ({ posts }) => {
           <Box sx={{ pt: 6, pb: 2 }}>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} sm={7} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
-                <Typography variant="h2">Latest Posts</Typography>
+                <Typography variant="h2">Recent Posts</Typography>
               </Grid>
 
               <Grid item xs={12} sm={5} sx={{ textAlign: { xs: 'center', sm: 'right' } }}>
-                <NextButton href="/blog" endIcon={<ArrowForward />} color="inherit">
+                <NextButton href="/blog" endIcon={<ArrowForward />} color="primary" variant="contained">
                   View All
                 </NextButton>
               </Grid>

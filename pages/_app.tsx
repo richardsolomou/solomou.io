@@ -1,5 +1,7 @@
 import { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
+import { Analytics } from '@vercel/analytics/react';
+import 'highlight.js/styles/base16/material-palenight.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -42,6 +44,7 @@ const MyApp: React.FC<MyAppProps> = ({ Component, pageProps, emotionCache = clie
       </Head>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </CacheProvider>
   );
