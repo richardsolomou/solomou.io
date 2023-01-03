@@ -38,7 +38,7 @@ const PostPage: NextPage<{ post: FullPost }> = ({ post }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="title" key="title" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
+        <meta name="title" key="title" content={`${post.title} | Richard Solomou`} />
         <meta name="keywords" key="keywords" content={`${post.title}, posted on ${post.postedAt} by Richard Solomou`} />
         <meta
           name="description"
