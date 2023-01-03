@@ -40,7 +40,29 @@ const MyApp: React.FC<MyAppProps> = ({ Component, pageProps, emotionCache = clie
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <meta name="title" content="Richard Solomou" />
+        <meta name="title" key="title" content="Richard Solomou" />
+        <meta name="keywords" key="keywords" content="Richard Solomou" />
+        <meta name="description" key="description" content="Richard Solomou" />
+
+        {/* Facebook */}
+        <meta name="og:type" key="og:type" content="website" />
+        <meta name="og:url" key="og:url" content="https://solomou.io" />
+        <meta name="og:title" key="og:title" content="Richard Solomou" />
+        <meta name="og:description" key="og:description" content="Richard Solomou" />
+        <meta name="og:image" key="og:image" content="https://solomou.io/images/icons/apple-splash-1334-750.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" key="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" key="twitter:url" content="https://solomou.io" />
+        <meta name="twitter:title" key="twitter:title" content="Richard Solomou" />
+        <meta name="twitter:description" key="twitter:description" content="Richard Solomou" />
+        <meta
+          name="twitter:image"
+          key="twitter:image"
+          content="https://solomou.io/images/icons/apple-splash-1334-750.jpg"
+        />
+        <meta name="twitter:site" key="twitter:site" content="@richardsolomou" />
+        <meta name="twitter:creator" key="twitter:creator" content="@richardsolomou" />
       </Head>
       <Layout>
         <Component {...pageProps} />
