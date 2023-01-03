@@ -32,7 +32,7 @@ export const PostBody: React.FC<{ body: string }> = ({ body }) => {
 
           if (domNode instanceof Element && domNode.name === 'pre') {
             return (
-              <Paper component="pre" {...domNode.attribs} sx={{ overflow: 'hidden' }}>
+              <Paper component="pre" {...domNode.attribs} sx={{ p: 2, overflow: 'hidden' }}>
                 {domToReact(domNode.children)}
               </Paper>
             );
