@@ -1,6 +1,21 @@
 {
   "name": "solomou.io",
+  "version": "1.0.0",
+  "homepage": "https://solomou.io",
+  "bugs": {
+    "url": "https://github.com/richardsolomou/solomou.io/issues",
+    "email": "richard@solomou.io"
+  },
   "license": "MIT",
+  "author": {
+    "name": "Richard Solomou",
+    "email": "richard@solomou.io",
+    "url": "https://solomou.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardsolomou/solomou.io"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -16,12 +31,12 @@
     "@emotion/styled": "^11.10.5",
     "@giscus/react": "^2.2.6",
     "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.3",
-    "@next/font": "^13.1.1",
-    "@octokit/graphql": "^5.0.4",
-    "@vercel/analytics": "^0.1.6",
-    "html-react-parser": "^3.0.6",
-    "next": "^13.1.1",
+    "@mui/material": "^5.11.6",
+    "@next/font": "^13.1.5",
+    "@octokit/graphql": "^5.0.5",
+    "@vercel/analytics": "^0.1.8",
+    "html-react-parser": "^3.0.8",
+    "next": "^13.1.5",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,20 +55,16 @@
     "slug": "^8.2.2"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@tarrasque/eslint-config": "^1.0.1",
+    "@tarrasque/prettier-config": "^1.0.2",
+    "@tarrasque/tsconfig": "^1.0.2",
     "@types/node": "^18.11.18",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^18.0.26",
+    "@types/react": "^18.0.27",
     "@types/slug": "^5.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-config-next": "^13.1.1",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
-    "prettier": "^2.8.1",
-    "pwa-asset-generator": "^6.2.0",
+    "eslint": "^8.32.0",
+    "prettier": "^2.8.3",
+    "pwa-asset-generator": "^6.2.1",
     "typescript": "^4.9.4"
   }
 }

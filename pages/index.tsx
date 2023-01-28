@@ -48,8 +48,8 @@ const IndexPage: NextPage<{ posts: ShortPost[] }> = ({ posts }) => {
               </Typography>
 
               <Typography variant="h3" sx={{ color: Color.PurpleLight }}>
-                I&apos;m a Full-Stack Developer with a focus on the front-end and a passion for creating user-friendly
-                web applications.
+                I&apos;m a Full-Stack Engineer 👨‍💻, husky parent 🐶, and coffee lover ☕️. Sometimes I write about tech
+                stuff here.
               </Typography>
             </Box>
           </Grid>
@@ -61,24 +61,31 @@ const IndexPage: NextPage<{ posts: ShortPost[] }> = ({ posts }) => {
 
           {/* Positions */}
           <Grid item xs={12} sm={9} order={2}>
-            <Box sx={{ pt: 3 }}>
+            <Box sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 1 }}>
               <Box
-                sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', sm: 'inherit' }, pb: 1 }}
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  alignItems: { xs: 'center', sm: 'center' },
+                  justifyContent: { xs: 'center', sm: 'inherit' },
+                  flexWrap: 'wrap',
+                  gap: 1.5,
+                }}
               >
+                <Typography variant="body2">Currently</Typography>
+
                 <Chip
                   sx={{
                     background: Color.Keenious,
-                    height: 'auto',
                     [`& .${chipClasses.label}`]: {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexWrap: 'wrap',
                     },
                   }}
                   label={
                     <>
-                      <Typography variant="body2">Front-End Engineer at</Typography>
+                      <Typography variant="body2">Technical Lead at</Typography>
 
                       <AnimatedImageLink href="https://keenious.com">
                         <Image src={keeniousLogo} alt="Keenious" height={20} style={{ marginBottom: 6 }} />

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
 import { Box, Dialog, FormHelperText } from '@mui/material';
 import { DetailedHTMLProps, ImgHTMLAttributes, useState } from 'react';
 

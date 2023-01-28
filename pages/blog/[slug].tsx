@@ -26,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
  * @returns post data
  */
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params.slug as string;
+  const slug = params?.slug as string;
   const post = await BlogUtils.getPost(slug);
   return { props: { post } };
 };

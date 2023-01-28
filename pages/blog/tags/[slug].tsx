@@ -24,15 +24,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
  * @returns tag and posts
  */
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params.slug as string;
+  const slug = params?.slug as string;
   const tags = await BlogUtils.getTags();
   const tag = tags.find((tag) => tag.slug === slug);
-  const posts = await BlogUtils.getPostsByTag(tag);
-  return { props: { tag, posts } };
+  if (tag) {
+    const posts = await BlogUtils.getPostsByTag(tag);
+    return { props: { tag, posts } };
+  }
+  return { props: {} };
 };
 
-const TagPage: NextPage<{ tag: Tag; posts: ShortPost[] }> = ({ tag, posts }) => {
-  const title = `Posts tagged with "${tag.title}" - Blog - Richard Solomou`;
+const TagPage: NextPage<{ tag?: Tag; posts?: ShortPost[] }> = ({ tag, posts }) => {
+  const title = `Posts tagged with "${tag?.title}" - Blog - Richard Solomou`;
 
   return (
     <>
@@ -43,10 +46,10 @@ const TagPage: NextPage<{ tag: Tag; posts: ShortPost[] }> = ({ tag, posts }) => 
       <Wrapper>
         <Box sx={{ py: 2 }}>
           <Typography variant="h2" sx={{ mb: 2 }}>
-            Posts tagged with &quot;{tag.title}&quot;
+            Posts tagged with &quot;{tag?.title}&quot;
           </Typography>
 
-          <PostCards posts={posts} />
+          {posts && <PostCards posts={posts} />}
         </Box>
       </Wrapper>
     </>

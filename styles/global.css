@@ -17,9 +17,9 @@ html {
 
 /* NProgress */
 #nprogress .bar {
-  background: #475268;
+  background: #abaac1;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px #475268, 0 0 5px #475268;
+  box-shadow: 0 0 10px #abaac1, 0 0 5px #abaac1;
 }

@@ -21,7 +21,8 @@ export const Wrapper: React.FC<WrapperProps> = ({ children }) => {
             <Toolbar
               disableGutters
               sx={{
-                py: { xs: 2, sm: 2 },
+                py: 2,
+                pt: 4,
                 flexDirection: { xs: 'column', sm: 'row' },
                 alignItems: 'center',
                 justifyContent: { xs: 'center', sm: 'space-between' },

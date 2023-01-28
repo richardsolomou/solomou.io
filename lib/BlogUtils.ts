@@ -9,7 +9,7 @@ import { Discussion, Label, ListDiscussion, SearchDiscussion, ShortPost, Tag } f
 
 const api = graphql.defaults({
   headers: {
-    authorization: 'token '.concat(process.env.GITHUB_ACCESS_TOKEN),
+    authorization: `token ${process.env.GITHUB_ACCESS_TOKEN}`,
   },
 });
 
@@ -87,7 +87,7 @@ export class BlogUtils {
       labels.forEach((label) => {
         const existingTag = acc.find((tag) => tag.title === label.name);
 
-        if (existingTag) {
+        if (existingTag?.count) {
           existingTag.count++;
         } else {
           acc.push(convertLabelToTag(label));
