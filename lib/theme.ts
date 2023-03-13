@@ -1,7 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { Raleway } from '@next/font/google';
+import { Raleway } from 'next/font/google';
 
-import { Color } from './colors';
+import { Color, Gradient } from './colors';
 
 const raleway = Raleway({ subsets: ['latin'] });
 
@@ -10,7 +10,7 @@ export let theme = createTheme({
     mode: 'dark',
     primary: { main: Color.Purple },
     secondary: { main: Color.PaleOrange },
-    background: { default: Color.PurpleDark, paper: Color.PurpleDark },
+    background: { default: Gradient.Linear, paper: Gradient.Linear },
     error: { main: Color.Red },
     warning: { main: Color.Orange },
     info: { main: Color.Blue },

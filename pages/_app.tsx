@@ -1,23 +1,13 @@
 import { EmotionCache } from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { Analytics } from '@vercel/analytics/react';
-import 'highlight.js/styles/base16/material-palenight.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
 import React from 'react';
 
 import { Layout } from '../components/Layout';
 import createEmotionCache from '../lib/createEmotionCache';
 import '../styles/global.css';
-
-NProgress.configure({ showSpinner: false });
-
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -36,6 +26,7 @@ const MyApp: React.FC<MyAppProps> = ({ Component, pageProps, emotionCache = clie
   return (
     <CacheProvider value={emotionCache}>
       <Head>
+        <title>Richard Solomou</title>
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"

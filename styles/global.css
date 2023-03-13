@@ -14,12 +14,3 @@ html {
   -moz-font-feature-settings: 'lnum';
   font-feature-settings: 'lnum';
 }
-
-/* NProgress */
-#nprogress .bar {
-  background: #abaac1;
-}
-
-#nprogress .peg {
-  box-shadow: 0 0 10px #abaac1, 0 0 5px #abaac1;
-}
