@@ -25,25 +25,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/cache": "^11.10.5",
+    "@emotion/cache": "^11.10.7",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.11",
-    "@mui/material": "^5.11.12",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.11.16",
     "@vercel/analytics": "^0.1.11",
-    "next": "^13.2.4",
+    "next": "^13.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@tarrasque/eslint-config": "^1.0.2",
-    "@tarrasque/prettier-config": "^1.0.3",
-    "@tarrasque/tsconfig": "^1.0.3",
-    "@types/node": "^18.15.2",
-    "@types/react": "^18.0.28",
-    "eslint": "^8.36.0",
-    "prettier": "^2.8.4",
+    "@tronite/eslint-config": "^1.0.4",
+    "@tronite/prettier-config": "^1.0.3",
+    "@tronite/tsconfig": "^1.0.3",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.34",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7",
     "pwa-asset-generator": "^6.2.1",
     "typescript": "^4.9.5"
   }
