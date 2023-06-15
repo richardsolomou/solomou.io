@@ -69,6 +69,7 @@ const IndexPage: NextPage = () => {
               display: 'flex',
               transition: 'all 0.2s ease-in-out',
               p: 1,
+              borderRadius: 90,
               '&:hover, &:focus, &:active': { px: 2 },
               [`& .${chipClasses.label}`]: {
                 display: 'flex',
