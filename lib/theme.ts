@@ -9,8 +9,8 @@ export let theme = createTheme({
   palette: {
     mode: 'dark',
     primary: { main: Color.Purple },
-    secondary: { main: Color.PaleOrange },
-    background: { default: Gradient.Linear, paper: Gradient.Linear },
+    secondary: { main: Color.Keenious },
+    background: { default: Color.Black, paper: Gradient.Linear },
     error: { main: Color.Red },
     warning: { main: Color.Orange },
     info: { main: Color.Blue },

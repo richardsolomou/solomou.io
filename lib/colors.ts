@@ -19,7 +19,6 @@ export enum Color {
   Red = '#f44336',
   // Orange
   Orange = '#f9cb25',
-  PaleOrange = '#ffdbb4',
   // Green
   Green = '#14532d',
 

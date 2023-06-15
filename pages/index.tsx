@@ -48,7 +48,7 @@ const IndexPage: NextPage = () => {
         {/* Positions */}
         <Box
           sx={{
-            pt: 3,
+            pt: 4,
             pb: 2,
             display: 'flex',
             flexDirection: 'column',
@@ -58,21 +58,30 @@ const IndexPage: NextPage = () => {
           }}
         >
           <Chip
+            component="a"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://keenious.com"
+            clickable
             sx={{
-              background: Color.Keenious,
+              background: `${Color.Keenious} !important`,
+              height: 'auto',
+              display: 'flex',
+              transition: 'all 0.2s ease-in-out',
+              p: 1,
+              '&:hover, &:focus, &:active': { px: 2 },
               [`& .${chipClasses.label}`]: {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                pt: '2px',
               },
             }}
             label={
               <>
                 <Typography variant="body2">Technical Lead at</Typography>
 
-                <AnimatedImageLink href="https://keenious.com">
-                  <Image src={keeniousLogo} alt="Keenious" height={20} style={{ marginBottom: 6 }} />
-                </AnimatedImageLink>
+                <Image src={keeniousLogo} alt="Keenious" height={20} style={{ marginLeft: 6, marginBottom: 8 }} />
               </>
             }
           />
@@ -120,6 +129,10 @@ const IndexPage: NextPage = () => {
 
           <AnimatedImageLink href="/twitter">
             <Image src="/images/social/twitter.png" width={38} height={38} alt="Twitter" />
+          </AnimatedImageLink>
+
+          <AnimatedImageLink href="/instagram">
+            <Image src="/images/social/instagram.png" width={38} height={38} alt="Instagram" />
           </AnimatedImageLink>
         </Box>
       </Container>
