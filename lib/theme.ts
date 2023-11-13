@@ -38,7 +38,8 @@ export let theme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          fontWeight: 500,
+          backgroundColor: Color.White,
+          color: Color.Black,
         },
       },
     },

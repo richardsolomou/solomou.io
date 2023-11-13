@@ -1,3 +1,4 @@
+import { GitHub, Instagram, LinkedIn } from '@mui/icons-material';
 import { Box, Chip, Container, Tooltip, Typography } from '@mui/material';
 import { chipClasses } from '@mui/material/Chip';
 import { NextPage } from 'next';
@@ -5,6 +6,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import { AnimatedImageLink } from '../components/AnimatedImageLink';
+import { Medium } from '../components/icons/Medium';
+import { X } from '../components/icons/X';
 import { Color, Gradient } from '../lib/colors';
 import alliantsLogo from '../public/images/positions/alliants.svg';
 import feefoLogo from '../public/images/positions/feefo.svg';
@@ -87,9 +90,40 @@ const IndexPage: NextPage = () => {
             }
           />
 
+          <Chip
+            component="a"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://tarrasque.io"
+            clickable
+            sx={{
+              background: `${Color.BrownLight} !important`,
+              color: `${Color.White} !important`,
+              display: 'flex',
+              transition: 'all 0.2s ease-in-out',
+              p: 1,
+              borderRadius: 90,
+              '&:hover, &:focus, &:active': { px: 2 },
+              [`& .${chipClasses.label}`]: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pt: '2px',
+              },
+            }}
+            label={
+              <>
+                <Typography variant="body2">
+                  Creator of <strong>Tarrasque.io</strong>
+                </Typography>
+              </>
+            }
+          />
+
           <Typography
             variant="body2"
             sx={{
+              mt: 2,
               display: 'flex',
               alignItems: 'center',
               justifyContent: { xs: 'center', sm: 'inherit' },
@@ -122,31 +156,31 @@ const IndexPage: NextPage = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', py: 1 }}>
           <Tooltip title="LinkedIn">
             <AnimatedImageLink href="/linkedin">
-              <Image src="/images/social/linkedin.png" width={38} height={38} alt="LinkedIn" />
+              <LinkedIn fontSize="large" htmlColor={Color.White} />
             </AnimatedImageLink>
           </Tooltip>
 
           <Tooltip title="GitHub">
             <AnimatedImageLink href="/github">
-              <Image src="/images/social/github.png" width={38} height={38} alt="GitHub" />
+              <GitHub fontSize="large" htmlColor={Color.White} />
             </AnimatedImageLink>
           </Tooltip>
 
-          <Tooltip title="Twitter">
-            <AnimatedImageLink href="/twitter">
-              <Image src="/images/social/twitter.png" width={38} height={38} alt="Twitter" />
+          <Tooltip title="X/Twitter">
+            <AnimatedImageLink href="/x">
+              <X fontSize="large" htmlColor={Color.White} />
             </AnimatedImageLink>
           </Tooltip>
 
           <Tooltip title="Instagram">
             <AnimatedImageLink href="/instagram">
-              <Image src="/images/social/instagram.png" width={38} height={38} alt="Instagram" />
+              <Instagram fontSize="large" htmlColor={Color.White} />
             </AnimatedImageLink>
           </Tooltip>
 
           <Tooltip title="Medium">
-            <AnimatedImageLink href="/blog">
-              <Image src="/images/social/medium.png" width={38} height={38} alt="Medium" />
+            <AnimatedImageLink href="https://blog.solomou.io">
+              <Medium fontSize="large" htmlColor={Color.White} />
             </AnimatedImageLink>
           </Tooltip>
         </Box>
