@@ -36,9 +36,6 @@ export let theme = createTheme({
       },
     },
     MuiTooltip: {
-      defaultProps: {
-        followCursor: true,
-      },
       styleOverrides: {
         tooltip: {
           fontWeight: 500,

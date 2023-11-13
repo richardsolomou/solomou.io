@@ -1,4 +1,4 @@
-import { Box, Chip, Container, Typography } from '@mui/material';
+import { Box, Chip, Container, Tooltip, Typography } from '@mui/material';
 import { chipClasses } from '@mui/material/Chip';
 import { NextPage } from 'next';
 import Image from 'next/image';
@@ -120,21 +120,35 @@ const IndexPage: NextPage = () => {
 
         {/* Social */}
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', py: 1 }}>
-          <AnimatedImageLink href="/linkedin">
-            <Image src="/images/social/linkedin.png" width={38} height={38} alt="LinkedIn" />
-          </AnimatedImageLink>
+          <Tooltip title="LinkedIn">
+            <AnimatedImageLink href="/linkedin">
+              <Image src="/images/social/linkedin.png" width={38} height={38} alt="LinkedIn" />
+            </AnimatedImageLink>
+          </Tooltip>
 
-          <AnimatedImageLink href="/github">
-            <Image src="/images/social/github.png" width={38} height={38} alt="GitHub" />
-          </AnimatedImageLink>
+          <Tooltip title="GitHub">
+            <AnimatedImageLink href="/github">
+              <Image src="/images/social/github.png" width={38} height={38} alt="GitHub" />
+            </AnimatedImageLink>
+          </Tooltip>
 
-          <AnimatedImageLink href="/twitter">
-            <Image src="/images/social/twitter.png" width={38} height={38} alt="Twitter" />
-          </AnimatedImageLink>
+          <Tooltip title="Twitter">
+            <AnimatedImageLink href="/twitter">
+              <Image src="/images/social/twitter.png" width={38} height={38} alt="Twitter" />
+            </AnimatedImageLink>
+          </Tooltip>
 
-          <AnimatedImageLink href="/instagram">
-            <Image src="/images/social/instagram.png" width={38} height={38} alt="Instagram" />
-          </AnimatedImageLink>
+          <Tooltip title="Instagram">
+            <AnimatedImageLink href="/instagram">
+              <Image src="/images/social/instagram.png" width={38} height={38} alt="Instagram" />
+            </AnimatedImageLink>
+          </Tooltip>
+
+          <Tooltip title="Medium">
+            <AnimatedImageLink href="/blog">
+              <Image src="/images/social/medium.png" width={38} height={38} alt="Medium" />
+            </AnimatedImageLink>
+          </Tooltip>
         </Box>
       </Container>
     </Box>
