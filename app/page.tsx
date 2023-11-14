@@ -1,7 +1,5 @@
 import { GitHub, Instagram, LinkedIn } from '@mui/icons-material';
 import { Box, Chip, Container, Tooltip, Typography } from '@mui/material';
-import { chipClasses } from '@mui/material/Chip';
-import { NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
 
@@ -16,7 +14,7 @@ import overflowLogo from '../public/images/positions/overflow.svg';
 import protoioLogo from '../public/images/positions/protoio.svg';
 import richard from '../public/images/richard-rounded.png';
 
-const IndexPage: NextPage = () => {
+export default function IndexPage() {
   return (
     <Box
       component="main"
@@ -74,7 +72,7 @@ const IndexPage: NextPage = () => {
               p: 1,
               borderRadius: 90,
               '&:hover, &:focus, &:active': { px: 2 },
-              [`& .${chipClasses.label}`]: {
+              '& .MuiChip-label': {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -104,7 +102,7 @@ const IndexPage: NextPage = () => {
               p: 1,
               borderRadius: 90,
               '&:hover, &:focus, &:active': { px: 2 },
-              [`& .${chipClasses.label}`]: {
+              '& .MuiChip-label': {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -187,6 +185,4 @@ const IndexPage: NextPage = () => {
       </Container>
     </Box>
   );
-};
-
-export default IndexPage;
+}
