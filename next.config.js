@@ -13,6 +13,12 @@ const nextConfig = {
       { source: '/link/digitalocean', destination: 'https://m.do.co/c/b75444449cb8', permanent: false },
     ];
   },
+  async rewrites() {
+    return [
+      // CV
+      { source: '/cv', destination: '/cv.pdf' },
+    ];
+  },
 };
 
 module.exports = nextConfig;
